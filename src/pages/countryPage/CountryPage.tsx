@@ -37,6 +37,13 @@ const CountryPage = () => {
     console.log(currentCountry)
   }, [countriesByRegion])
 
+  const handleClickNeighbour =(shortCode:string)=>{
+    console.log("lol",shortCode)
+    const country = countriesByRegion.find((item)=>item?.cca3===shortCode);
+    navigate(`/${country?.name?.common}`)
+    setCurrentCountry(country)
+  }
+
   if(currentCountry) {
     const { 
       population,
@@ -95,10 +102,12 @@ const CountryPage = () => {
                 </Styles.Languages>
               </Box>
             </Flex>
-            {borders && <Flex css={{alignItems: 'center', marginTop: '3rem', flexWrap: 'wrap', gap: '1rem'}} >
+            {borders && <Flex css={{alignItems: 'center', marginTop: '3rem', flexWrap: 'wrap', gap: '1rem'}}>
                 <span>Border Countries: </span>
-                {borders.map((countryItem) => <Box key={countryItem} css={{backgroundColor: state.toggleBg ? 'var(--dark-blue)' : 'var(--white)', marginLeft: '0.7rem', fontSize: '0.8rem', justifyContent: 'center', padding: '0.3rem 0.5rem', borderRadius: '4px', fontWeight: '700'}}> 
+                {borders.map((countryItem) => <Box key={countryItem} css={{backgroundColor: state.toggleBg ? 'var(--dark-blue)' : 'var(--white)', marginLeft: '0.7rem', fontSize: '0.8rem', justifyContent: 'center', padding: '0.3rem 0.5rem', borderRadius: '4px', fontWeight: '700'}} > 
+                <p onClick={()=>handleClickNeighbour(countryItem)}>
                   {countryItem}
+                  </p>
                 </Box>)}
               </Flex>}
 
