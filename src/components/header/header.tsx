@@ -11,7 +11,7 @@ const Header = () => {
       <Container>
         <Styles.Header>
           <Styles.Title>
-            <a href="#">Where in the world?</a>
+            <a href="#">Seek Assignment</a>
           </Styles.Title>
           <Styles.Toggle 
           onClick={toggleBg}
