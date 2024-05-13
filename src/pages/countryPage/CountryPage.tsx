@@ -11,7 +11,7 @@ import Box from '../../components/box'
 const CountryPage = () => {
   const navigate = useNavigate()
   const { country  } = useParams()
-  const decodedCountry = decodeURI(country);
+  const decodedCountry = country ? decodeURI(country):"";
   const [currentCountry, setCurrentCountry] = useState<CountryProps>()
   const { countriesByRegion, state,loadCountriesByRegion } = countryContext();
   let nativeName = '';
